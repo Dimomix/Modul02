@@ -9,9 +9,9 @@ namespace Modul02
     {
         static void zadanie01()
         {
-            string text=Console.ReadLine();
-            int whitespace=0;
-            for (int i = 0; i < text.Length || text[i]=='.'; i++)
+            string text = Console.ReadLine();
+            int whitespace = 0;
+            for (int i = 0; i < text.Length || text[i] == '.'; i++)
             {
                 if (text[i] == ' ') { whitespace++; }
                 if (text[i] == '.') { break; }
@@ -23,10 +23,10 @@ namespace Modul02
             int a = 0, b = 0;
             for (int i = 0; i < 3; i++)
             {
-                a+=(Ticket / Convert.ToInt32(Math.Pow(10,i+3)))%10;
-                b+= (Ticket / Convert.ToInt32(Math.Pow(10,i) ))% 10;
+                a += (Ticket / Convert.ToInt32(Math.Pow(10, i + 3))) % 10;
+                b += (Ticket / Convert.ToInt32(Math.Pow(10, i))) % 10;
             }
-            
+
             if (a == b)
             {
                 Console.WriteLine("Этот билет счастья");
@@ -45,7 +45,7 @@ namespace Modul02
                 try
                 {
                     Console.WriteLine("Введите номер билета:");
-                    String text= Console.ReadLine();
+                    String text = Console.ReadLine();
                     if (text.Length == 6)
                     {
                         ticket = Convert.ToInt32(text);
@@ -64,7 +64,7 @@ namespace Modul02
                     continue;
                 }
                 break;
-            } 
+            }
         }
         static string ConvertASCII(string text)
         {
@@ -113,16 +113,16 @@ namespace Modul02
                 {
                     Console.Write(i + " ");
                 }
-                Console.WriteLine(); 
+                Console.WriteLine();
             }
         }
         static int ReverseN(int N)
         {
-            string NStr = N.ToString(); 
-            char[] charN = NStr.ToCharArray(); 
-            Array.Reverse(charN); 
-            string reversedStr = new string(charN); 
-            int reversedNumber = int.Parse(reversedStr); 
+            string NStr = N.ToString();
+            char[] charN = NStr.ToCharArray();
+            Array.Reverse(charN);
+            string reversedStr = new string(charN);
+            int reversedNumber = int.Parse(reversedStr);
             return reversedNumber;
         }
         static void zadanie05()
@@ -135,9 +135,9 @@ namespace Modul02
         static void zadanie06()
         {
             Random random = new Random();
-            int number1 = random.Next(1, 101); 
-            int number2 = random.Next(1, 101); 
-            int number3 = random.Next(1, 101); 
+            int number1 = random.Next(1, 101);
+            int number2 = random.Next(1, 101);
+            int number3 = random.Next(1, 101);
             Console.WriteLine($"{number1}  {number2}  {number3}");
         }
         static void zadanie07()
@@ -155,16 +155,16 @@ namespace Modul02
         {
             int past_days = 234;
             int past_weeks = past_days / 7;
-            Console.WriteLine(past_days+" дней это "+past_weeks+"недель");
+            Console.WriteLine(past_days + " дней это " + past_weeks + "недель");
         }
         static void zadanie10()
         {
             Console.WriteLine("Введите двузначное число:");
             int number = int.Parse(Console.ReadLine());
-            if (number >= 10 && number <= 99) 
+            if (number >= 10 && number <= 99)
             {
-                int decimals = number / 10; 
-                int units = number % 10; 
+                int decimals = number / 10;
+                int units = number % 10;
                 int sum = decimals + units;
                 int product = decimals * units;
                 Console.WriteLine("Число десятков: " + decimals);
@@ -348,15 +348,37 @@ namespace Modul02
         {
             Console.WriteLine("Введите значение x:");
             double x = double.Parse(Console.ReadLine());
-            double y = 7*x*x-3*x+6;
+            double y = 7 * x * x - 3 * x + 6;
             Console.WriteLine("Ответ функции y=7x^2-3x+6 при x = " + x + " равно " + y);
         }
         static void zadanie17()
         {
             Console.WriteLine("Введите значение a:");
             double a = double.Parse(Console.ReadLine());
-            double x = 12* Math.Pow(a,2)+7*a-16;
-            Console.WriteLine("Ответ функции x = 12a^2 +7x-16 при a = "+a+" равно " + x);
+            double x = 12 * Math.Pow(a, 2) + 7 * a - 16;
+            Console.WriteLine("Ответ функции x = 12a^2 +7x-16 при a = " + a + " равно " + x);
+        }
+        static void zadanie17_prak()
+        {
+            Console.WriteLine("Введите 3 значное число:");
+            string s3 = Console.ReadLine();
+            try
+            {
+                int a = int.Parse(s3);
+                if (s3.Length != 3)
+                {
+                    zadanie17_prak();
+                }
+            }
+            catch
+            {
+                zadanie17_prak();
+            }
+            char a2 = s3[1];
+            s3 = s3.Remove(1, 1);
+            s3 += a2;
+            Console.WriteLine(s3);
+
         }
         static void zadanie18()
         {
@@ -364,7 +386,32 @@ namespace Modul02
             double a = double.Parse(Console.ReadLine());
             double S = 4 * a;
             Console.WriteLine("Периметр квадрата: " + S);
+
         }
+        static string istrue(int a){
+            if (a == 0) return "False";
+            return "True";
+            }
+        static bool is_true(int a){
+            if (a == 0) return false;
+            return true;
+            }
+        static void zadanie18_prak()
+        {
+            for(int x=0; x<2; ++x){
+                for (int y=0; y < 2; ++y){
+                    for (int z=0;z< 2; ++z){
+                        Console.WriteLine("при х: "+ istrue (x)+ " при у: "+ istrue(y) + " при z: "+ istrue(z));
+                        bool X =is_true(x), Y = is_true(y), Z = is_true(z);
+                        Console.WriteLine("не X и не Y: "+ (!X&!Y));
+                        Console.WriteLine("X или (не X и Y): "+(X ||(!X &Y)));
+                        Console.WriteLine("не X и Y) или Y: "+((!X&Y)||Y));
+                    }
+                }
+            }
+        }
+
+
         static void zadanie19()
         {
             Console.WriteLine("Введите радиус:");
@@ -400,11 +447,13 @@ namespace Modul02
             //zadanie15();
             //zadanie16();
             //zadanie17();
+            //zadanie17_prak();
             //zadanie18();
-            zadanie19();
-            zadanie20();
+            //zadanie18_prak();
+            //zadanie19();
+            //zadanie20();
 
-            Console.WriteLine(Console.ReadLine());
+            Console.ReadKey();
         }
     }
 }
